@@ -1,6 +1,6 @@
 # `prismic-svelte`
 
-**WARNING: This project is in early development.**
+**WARNING: This project is in early development. See issues and planning on [the GitHub repo](https://github.com/samlfair/prismic-svelte).**
 
 A set of helpers for developing Prismic projects with Svelte.
 
