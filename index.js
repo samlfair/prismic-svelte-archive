@@ -1,11 +1,6 @@
 import { createClient, getEndpoint } from '@prismicio/client'
 import { asText, asHTML, asLink, asDate } from '@prismicio/helpers'
 
-// To do:
-// - Create an image component?
-// - Add HTML serializer to config and asHTML
-// - Handle the API options
-
 const createPrismicSvelte = ({ repoName }) => {
   const endpoint = getEndpoint(repoName)
 

@@ -4,6 +4,14 @@
 
 A set of helpers for developing Prismic projects with Svelte.
 
+## To do
+
+- [ ] Add HTML Serializer to config (and asHTML)
+- [ ] Create a SliceZone component
+- [ ] Handle the API options
+
+Do we want to add an Image component?
+
 ## Installation
 
 To add `prismic-svelte`, first install:
