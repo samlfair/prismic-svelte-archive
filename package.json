@@ -1,0 +1,15 @@
+{
+  "name": "prismic-svelte",
+  "version": "1.0.0",
+  "description": "A package of helpers for using Prismic with Svelte.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sam Littlefair <sam@littlefair.ca> (http://littlefair.ca/)",
+  "license": "ISC",
+  "dependencies": {
+    "@prismicio/client": "^6.0.0-alpha.8",
+    "@prismicio/helpers": "^2.0.0-alpha.5"
+  }
+}
