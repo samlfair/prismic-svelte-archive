@@ -1,5 +1,7 @@
 # `prismic-svelte`
 
+**WARNING: This project is in early development.**
+
 A set of helpers for developing Prismic projects with Svelte.
 
 ## Installation
@@ -44,7 +46,7 @@ const config = {
 
 const Prismic = createPrismicSvelte(config)
 
-export const { repoName, endpont, Client, asText, asHTML, asLink, asDate } =
+export const { repoName, endpoint, Client, asText, asHTML, asLink, asDate } =
   Prismic
 
 export default Prismic
