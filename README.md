@@ -7,6 +7,7 @@ A set of helpers for developing Prismic projects with Svelte.
 ## To do
 
 - [ ] Add HTML Serializer to config (and asHTML)
+- [ ] Add Slices to config
 - [ ] Create a SliceZone component
 - [ ] Handle the API options
 
