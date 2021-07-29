@@ -1,8 +1,7 @@
 import { createClient, getEndpoint } from '@prismicio/client'
 import { asText, asHTML, asLink, asDate } from '@prismicio/helpers'
-import { default as SliceZone } from './SliceZone.svelte'
+import SliceZone from './SliceZone.svelte'
 import MagicString from 'magic-string'
-import { composeSerializers } from '@prismicio/richtext'
 
 const addHeadersToClient = (endpoint, session, fetch) => {
   const { cookie } = session
@@ -16,33 +15,6 @@ const addHeadersToClient = (endpoint, session, fetch) => {
 }
 
 const usePrismic = ({ repoName }) => {
-  const endpoint = getEndpoint(repoName)
-  const Client = (session, fetch) =>
-    addHeadersToClient(endpoint, session, fetch)
-
-  return {
-    repoName,
-    endpoint,
-    asText,
-    Client,
-    asHTML,
-    asLink,
-    asDate,
-    SliceZone,
-  }
-}
-
-const $prismic = {
-  SliceZone,
-  asText,
-  asHTML,
-  asLink,
-  asDate,
-}
-
-const prismic = $prismic
-
-const usePrismic2 = ({ repoName }) => {
   const endpoint = getEndpoint(repoName)
   const Client = (session = null, fetch = null) =>
     addHeadersToClient(endpoint, session, fetch)
@@ -65,6 +37,4 @@ const usePrismic2 = ({ repoName }) => {
   }
 }
 
-export { SliceZone, asText, asHTML, asLink, asDate, usePrismic2, prismic }
-
-export default $prismic
+export { SliceZone, asText, asHTML, asLink, asDate, usePrismic }
