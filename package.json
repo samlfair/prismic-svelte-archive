@@ -16,14 +16,12 @@
     "@prismicio/helpers": "^2.0.0-alpha.5",
     "@prismicio/richtext": "^2.0.0-alpha.6",
     "@sveltejs/kit": "next",
-    "svelte": "^3.34.0"
+    "svelte": "^3.34.0",
+    "magic-string": "^0.25.7"
   },
   "keywords": [
     "svelte",
     "prismic"
   ],
-  "type": "module",
-  "dependencies": {
-    "magic-string": "^0.25.7"
-  }
+  "type": "module"
 }
