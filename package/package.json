@@ -1,16 +1,10 @@
 {
   "name": "prismic-svelte",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A package of helpers for using Prismic with Svelte.",
   "main": "dist/index.js",
   "svelte": "src/index.js",
   "module": "dist/index.mjs",
-  "scripts": {
-    "dev": "svelte-kit dev",
-    "build": "svelte-kit build",
-    "preview": "svelte-kit preview",
-    "package": "svelte-kit package"
-  },
   "author": "samlfair",
   "license": "ISC",
   "dependencies": {
@@ -27,5 +21,10 @@
     "src",
     "dist"
   ],
-  "type": "module"
+  "type": "module",
+  "exports": {
+    "./package.json": "./package.json",
+    "./SliceZone.svelte": "./SliceZone.svelte",
+    ".": "./index.js"
+  }
 }
