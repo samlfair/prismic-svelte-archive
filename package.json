@@ -22,10 +22,6 @@
     "svelte",
     "prismic"
   ],
-  "files": [
-    "src",
-    "dist"
-  ],
   "type": "module",
   "dependencies": {
     "magic-string": "^0.25.7"
