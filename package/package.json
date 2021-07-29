@@ -2,6 +2,7 @@
   "name": "prismic-svelte",
   "version": "1.0.3",
   "description": "A package of helpers for using Prismic with Svelte.",
+  "svelte": "./index.js",
   "author": "samlfair",
   "license": "ISC",
   "devDependencies": {
@@ -9,7 +10,6 @@
     "@prismicio/helpers": "^2.0.0-alpha.5",
     "@prismicio/richtext": "^2.0.0-alpha.6",
     "@sveltejs/kit": "next",
-    "source-map-js": "^0.6.2",
     "svelte": "^3.34.0"
   },
   "keywords": [
@@ -21,6 +21,9 @@
     "dist"
   ],
   "type": "module",
+  "dependencies": {
+    "magic-string": "^0.25.7"
+  },
   "exports": {
     "./package.json": "./package.json",
     "./SliceZone.svelte": "./SliceZone.svelte",

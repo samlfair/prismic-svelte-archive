@@ -8,15 +8,6 @@ const config = {
       // https://kit.svelte.dev/docs#packaging
       emitTypes: false,
     },
-    vite: {
-      optimizeDeps: {
-        include: [
-          '@prismicio/client',
-          '@prismicio/helpers',
-          '@prismicio/richtext',
-        ],
-      },
-    },
   },
 }
 
