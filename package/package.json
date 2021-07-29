@@ -10,7 +10,6 @@
   "dependencies": {
     "@prismicio/client": "^6.0.0-alpha.8",
     "@prismicio/helpers": "^2.0.0-alpha.5",
-    "@sveltejs/kit": "next",
     "svelte": "^3.34.0"
   },
   "keywords": [
