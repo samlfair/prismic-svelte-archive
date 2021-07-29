@@ -1,6 +1,6 @@
 {
   "name": "prismic-svelte",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "description": "A package of helpers for using Prismic with Svelte.",
   "main": "dist/index.js",
   "svelte": "src/index.js",
