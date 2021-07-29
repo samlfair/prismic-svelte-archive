@@ -2,14 +2,30 @@
   "name": "prismic-svelte",
   "version": "1.0.0",
   "description": "A package of helpers for using Prismic with Svelte.",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "svelte": "src/index.js",
+  "module": "dist/index.mjs",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "rollup -c",
+    "prepublishOnly": "npm run build"
   },
-  "author": "Sam Littlefair <sam@littlefair.ca> (http://littlefair.ca/)",
+  "author": "samlfair",
   "license": "ISC",
   "dependencies": {
     "@prismicio/client": "^6.0.0-alpha.8",
-    "@prismicio/helpers": "^2.0.0-alpha.5"
-  }
+    "@prismicio/helpers": "^2.0.0-alpha.5",
+    "@rollup/plugin-node-resolve": "^9.0.0",
+    "rollup": "^2.0.0",
+    "rollup-plugin-svelte": "^6.0.0",
+    "svelte": "^3.34.0"
+  },
+  "keywords": [
+    "svelte",
+    "prismic"
+  ],
+  "files": [
+    "src",
+    "dist"
+  ]
 }
