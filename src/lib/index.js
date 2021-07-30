@@ -1,9 +1,14 @@
 import { createClient, getEndpoint } from '@prismicio/client'
 import { asText, asHTML, asLink, asDate } from '@prismicio/helpers'
 import MagicString from 'magic-string'
-import util from 'util'
 
-const addHeadersToClient = (endpoint, session, fetch) => {
+const addHeadersToClient = (
+  endpoint = null,
+  session = { cookie: null },
+  fetch = null,
+) => {
+  if (typeof endpoint !== 'string')
+    throw 'Please specify an endpoint as a string.'
   const { cookie } = session
   const req = {
     headers: {
@@ -15,6 +20,8 @@ const addHeadersToClient = (endpoint, session, fetch) => {
 }
 
 const usePrismic = ({ repoName }) => {
+  // This will error if there are two module script elements
+  // Must handle
   return {
     script: ({ content, filename, markup, attributes }) => {
       if (attributes.context === 'module') {
@@ -43,8 +50,6 @@ const usePrismic = ({ repoName }) => {
     },
   }
 }
-
-// export { SliceZone, asText, asHTML, asLink, asDate, usePrismic }
 
 const Client = (repoName) => {
   const endpoint = getEndpoint(repoName)
