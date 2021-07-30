@@ -19,47 +19,22 @@ Do we want to add an Image component?
 To add `prismic-svelte`, first install:
 
 ```bash
-npm i prismic-svelte
+npm i prismic-svelte@alpha
 ```
 
-Then, create `/src/lib/prismic.js`, and paste in the following code:
+In `svelte.config.js`, import the plugin and add it to Svelte's preprocessor. Update the repo name.
 
 ```js
-import createPrismicSvelte from 'prismic-svelte'
+import { usePrismic } from 'prismic-svelte'
 
+/** @type {import('@sveltejs/kit').Config} */
 const config = {
-  // Fill in your repo name (required)
-  repoName: 'prismicio-docs-v3',
-
-  // Define a route for each Custom Type
-  routes: [
-    {
-      type: 'homepage',
-      path: '/',
-    },
-    {
-      type: 'page',
-      path: '/:uid',
-    },
-    {
-      type: 'post',
-      path: '/blog/:uid',
-    },
-  ],
-
-  // Add an access token (only if your repo is private)
-  accessToken: null,
-
-  // Add any API options
-  options: null,
+  kit: {
+    // hydrate the <div id="svelte"> element in src/app.html
+    target: '#svelte',
+  },
+  preprocess: [usePrismic({ repoName: 'your-repo-name' })],
 }
-
-const Prismic = createPrismicSvelte(config)
-
-export const { repoName, endpoint, Client, asText, asHTML, asLink, asDate } =
-  Prismic
-
-export default Prismic
 ```
 
 Fill in the config options. Only `repoName` is required.
@@ -74,49 +49,48 @@ Fill in the config options. Only `repoName` is required.
 
 ## Usage
 
-In Svelte projects, use a relative path to import the Prismic helpers:
+The plugin injects a `SliceZone` component and `prismic` object into your app as needed.
+
+In a standard Svelte component:
 
 ```html
 <!-- Standard .svelte component -->
 
 <script>
-  import Prismic from './lib/prismic'
+  $: clientData = null
+
+  const getData = async () => {
+    clientData = await prismic.client(fetch).getAll()
+  }
+
+  getData()
 </script>
 ```
 
-In SvelteKit, use the `$` alias:
+In a SvelteKit project:
 
 ```html
 <!-- In a SvelteKit project -->
 
+<script context="module">
+  export async function load({ fetch, session }) {
+    const allDocs = await prismic.client(fetch, session).getAll()
+    return { props: { allDocs } }
+  }
+</script>
+
 <script>
-  import Prismic from '$lib/prismic'
+  export let allDocs
 </script>
 ```
 
 The plugin exports the following properties and methods:
 
-- `repoName`
-- `endpoint`
 - `asText()`
 - `asHTML()`
 - `asLink()`
 - `asDate()`
 - `Client()`
-- `Client().get()`
-- `Client().getFirst()`
-- `Client().getAll()`
-- `Client().getByID()`
-- `Client().getByIDs()`
-- `Client().getAllByIDs()`
-- `Client().getByUID()`
-- `Client().getSingle()`
-- `Client().getByType()`
-- `Client().getAllByType()`
-- `Client().getByTag()`
-- `Client().getAllByTag()`
-- `Client().getByTags()`
-- `Client().getAllByTags()`
-- ...
+- `usePrismic()`
 
 See prismic.io/docs for information on how to use these methods.
