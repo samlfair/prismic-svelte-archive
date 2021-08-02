@@ -10,14 +10,17 @@
     "@prismicio/helpers": "^2.0.0-alpha.5",
     "@prismicio/richtext": "^2.0.0-alpha.6",
     "@sveltejs/kit": "next",
-    "svelte": "^3.34.0",
-    "magic-string": "^0.25.7"
+    "magic-string": "^0.25.7",
+    "svelte": "^3.34.0"
   },
   "keywords": [
     "svelte",
     "prismic"
   ],
   "type": "module",
+  "dependencies": {
+    "sm-commons": "^0.0.23"
+  },
   "exports": {
     "./package.json": "./package.json",
     "./SliceZone.svelte": "./SliceZone.svelte",

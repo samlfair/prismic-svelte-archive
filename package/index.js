@@ -31,6 +31,8 @@ const usePrismic = ({ repoName, routes, accessToken, options, slices }) => {
       const sourceFolder = process.cwd() + `/src/`
       const isInSrc = filename.indexOf(sourceFolder) >= 0
       if (isInSrc) {
+        // Will not insert prismic if there is no script tag
+        // Must create script tag if there is none
         let regex = /<script.*>/
         const match = content.match(regex)
         const startScript = match[0].length

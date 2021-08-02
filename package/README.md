@@ -50,7 +50,7 @@ Fill in the config options. Only `repoName` is required.
 
 ## Usage
 
-The plugin injects a `SliceZone` component and `prismic` object into your app as needed.
+The plugin injects a `SliceZone` component and `prismic` object into components in the `src` folder as needed.
 
 In a standard Svelte component:
 
@@ -83,6 +83,12 @@ In a SvelteKit project:
 <script>
   export let allDocs
 </script>
+```
+
+The SliceZone accepts a `slices` prop and a `body` prop. Slices is an object of Slice components. `body` is an array of Slice contents.
+
+```html
+<SliceZone slices="{slices}" body="{doc.data.body}" />
 ```
 
 The plugin exports the following properties and methods:
