@@ -8,7 +8,8 @@ A set of helpers for developing Prismic projects with Svelte.
 
 - [ ] Add HTML Serializer to config (and asHTML)
 - [ ] Add Slices to config
-- [ ] Create a SliceZone component
+- [x] Create a SliceZone component
+- [ ] Make SliceZone component work
 - [ ] Handle the API options
 - [ ] Add TypeScript and re-enable `config.kit.emitTypes`
 
@@ -49,7 +50,7 @@ Fill in the config options. Only `repoName` is required.
 
 ## Usage
 
-The plugin injects a `SliceZone` component and `prismic` object into your app as needed.
+The plugin injects a `SliceZone` component and `prismic` object into components in the `src` folder as needed.
 
 In a standard Svelte component:
 
@@ -82,6 +83,12 @@ In a SvelteKit project:
 <script>
   export let allDocs
 </script>
+```
+
+The SliceZone accepts a `slices` prop and a `body` prop. Slices is an object of Slice components. `body` is an array of Slice contents.
+
+```html
+<SliceZone slices="{slices}" body="{doc.data.body}" />
 ```
 
 The plugin exports the following properties and methods:
