@@ -19,7 +19,9 @@ const addHeadersToClient = (
   const client = createClient(endpoint, {
     fetch,
     req,
-    ...options,
+    defaultParams: {
+      ...options,
+    },
   })
   client.get()
   return client
