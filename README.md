@@ -87,8 +87,8 @@ In a SvelteKit project:
 
 The SliceZone accepts a `slices` prop and a `body` prop. Slices is an object of Slice components. `body` is an array of Slice contents.
 
-```html
-<SliceZone slices="{slices}" body="{doc.data.body}" />
+```svelte
+<SliceZone slices={slices} body={doc.data.body} />
 ```
 
 The plugin exports the following properties and methods:
