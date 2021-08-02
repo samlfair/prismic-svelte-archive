@@ -9,8 +9,8 @@ A set of helpers for developing Prismic projects with Svelte.
 - [ ] Add HTML Serializer to config (and asHTML)
 - [ ] Add Slices to config
 - [x] Create a SliceZone component
-- [ ] Make SliceZone component work
-- [ ] Handle the API options
+- [x] Make SliceZone component work
+- [x] Handle the API options
 - [ ] Add TypeScript and re-enable `config.kit.emitTypes`
 
 Do we want to add an Image component?
@@ -87,8 +87,8 @@ In a SvelteKit project:
 
 The SliceZone accepts a `slices` prop and a `body` prop. Slices is an object of Slice components. `body` is an array of Slice contents.
 
-```html
-<SliceZone slices="{slices}" body="{doc.data.body}" />
+```svelte
+<SliceZone slices={slices} body={doc.data.body} />
 ```
 
 The plugin exports the following properties and methods:

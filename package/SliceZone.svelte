@@ -4,8 +4,6 @@
   export let body, slices
 </script>
 
-<h1>Dev SliceZone</h1>
-
 {#if !slices.length}
   {#each body as slice, i}
     <div>
