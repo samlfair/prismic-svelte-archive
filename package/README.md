@@ -12,6 +12,7 @@ A set of helpers for developing Prismic projects with Svelte.
 - [x] Make SliceZone component work
 - [x] Handle the API options
 - [ ] Add TypeScript and re-enable `config.kit.emitTypes`
+- [ ] Configure previews with client v6
 
 Do we want to add an Image component?
 
@@ -23,10 +24,40 @@ To add `prismic-svelte`, first install:
 npm i prismic-svelte@alpha
 ```
 
+At the root of your project, create a file called `prismic.config.js`. Paste in the following code, and update the values:
+
+```js
+const prismicConfig = {
+  // Fill in your repo name
+  repoName: 'sam-onboarding-nuxt-blog',
+
+  // Define a route for each Custom Type
+  routes: [
+    {
+      type: 'page',
+      path: '/:uid',
+    },
+    {
+      type: 'post',
+      path: '/blog/:uid',
+    },
+  ],
+
+  // Add an access token (only if your repo is private)
+  accessToken: null,
+
+  // Add any API options
+  options: {},
+}
+
+export default prismicConfig
+```
+
 In `svelte.config.js`, import the plugin and add it to Svelte's preprocessor. Update the repo name.
 
 ```js
 import { usePrismic } from 'prismic-svelte'
+import { repoName } from './prismic.config.js'
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
@@ -34,7 +65,7 @@ const config = {
     // hydrate the <div id="svelte"> element in src/app.html
     target: '#svelte',
   },
-  preprocess: [usePrismic({ repoName: 'your-repo-name' })],
+  preprocess: [usePrismic({ repoName })],
 }
 ```
 
@@ -47,6 +78,17 @@ Fill in the config options. Only `repoName` is required.
 `accessToken`: An access token for the Prismic API; required only when your repo is private.
 
 `options`: Options for your Prismic API queries.
+
+To configure previews, create the file `/src/routes/preview.js` and paste in the following code:
+
+```js
+import { createPreview } from 'prismic-svelte'
+import prismicConfig from './../../prismic.config.js'
+
+export async function get({ query, headers }) {
+  return await createPreview(query, headers, prismicConfig.repoName)
+}
+```
 
 ## Usage
 
