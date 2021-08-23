@@ -23,6 +23,7 @@
     "./package.json": "./package.json",
     "./SliceZone.svelte": "./SliceZone.svelte",
     "./client.js": "./client.js",
+    "./createPreview.js": "./createPreview.js",
     ".": "./index.js",
     "./regexes.js": "./regexes.js",
     "./templateLiterals.js": "./templateLiterals.js"

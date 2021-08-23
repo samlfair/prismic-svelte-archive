@@ -7,6 +7,7 @@ import {
 } from '@prismicio/helpers'
 import MagicString from 'magic-string'
 import { setClientOptions, initClient } from './client.js'
+import createPreview from './createPreview.js'
 import * as regexes from './regexes.js'
 import * as strings from './templateLiterals.js'
 
@@ -59,6 +60,7 @@ const prismic = {
   asDate,
   initClient,
   setClientOptions,
+  createPreview,
 }
 
 export { usePrismic, prismic }
