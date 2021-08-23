@@ -52,6 +52,8 @@ Fill in the config options. Only `repoName` is required.
 
 The plugin injects a `SliceZone` component and `prismic` object into components in the `src` folder as needed.
 
+The `prismic` object includes a `client` method, which you can use to query the Prismic API. The `client` is already initialized with the `repoName` and options that you specified in `svelte.config.js`. You can also pass the `fetch` variable (available globally in Svelte, and provided as an argument in SvelteKit's load function) and the `session` variable. Passing the `session` variable is necessary for previews to work.
+
 In a standard Svelte component:
 
 ```html
@@ -96,8 +98,10 @@ The plugin exports the following properties and methods:
 - `asText()`
 - `asHTML()`
 - `asLink()`
+- `documentAsLink()`
 - `asDate()`
-- `Client()`
+- `setClientOptions()`
+- `initClient()`
 - `usePrismic()`
 
 See prismic.io/docs for information on how to use these methods.

@@ -1,42 +1,47 @@
-import { createClient, getEndpoint } from '@prismicio/client'
-import { asText, asHTML, asLink, asDate } from '@prismicio/helpers'
+import {
+  asText,
+  asHTML,
+  asLink,
+  asDate,
+  documentAsLink,
+} from '@prismicio/helpers'
 import MagicString from 'magic-string'
-import defineClientEndpoint from './defineClientEndpoint'
-import { scriptRegex } from './regexes'
+import { setClientOptions, initClient } from './client.js'
+import * as regexes from './regexes.js'
+import * as strings from './templateLiterals.js'
+
+const isInSrc = (filename) => {
+  const srcDir = `${process.cwd()}/src/`
+  return filename.indexOf(srcDir) >= 0
+}
 
 const usePrismic = ({ repoName, routes, accessToken, options, slices }) => {
   return {
     markup: ({ content, filename }) => {
-      const sourceFolder = process.cwd() + `/src/`
-      const isInSrc = filename.indexOf(sourceFolder) >= 0
-      if (isInSrc) {
-        // Will not insert prismic if there is no script tag
-        // Must create script tag if there is none
-        const match = content.match(scriptRegex)
+      const hasSliceZone = content.indexOf('SliceZone') >= 0
+      const hasPrismic = content.indexOf('prismic') >= 0
+      if (isInSrc(filename) && (hasSliceZone || hasPrismic)) {
+        // Will not insert prismic if there is no script tag. Must create script tag if there is none.
+        const ms = new MagicString(content, { filename })
+
+        const match = content.match(regexes.scriptTag)
         const startScript = match[0].length
-        const s = new MagicString(content, { filename })
-        const hasSliceZone = content.indexOf('SliceZone') >= 0
-        const hasPrismic = content.indexOf('prismic') >= 0
+
         if (hasSliceZone) {
-          s.appendRight(
-            startScript,
-            `import SliceZone from 'prismic-svelte/SliceZone.svelte'; `,
-          )
+          ms.appendRight(startScript, strings.importSliceZone())
         }
+
         if (hasPrismic) {
           // Routes / options are not working
-          s.appendRight(
+          ms.appendRight(
             startScript,
-            `import { prismic } from 'prismic-svelte'; prismic.client = prismic.defineClientEndpoint("${repoName}", ${JSON.stringify(
-              { routes, ...options },
-            )}); `,
+            strings.importPrismic() +
+              strings.initClient(repoName, routes, options),
           )
         }
-        if (hasSliceZone || hasPrismic) {
-          return {
-            code: s.toString(),
-            map: s.generateMap(),
-          }
+        return {
+          code: ms.toString(),
+          map: ms.generateMap(),
         }
       }
       return {
@@ -50,8 +55,10 @@ const prismic = {
   asText,
   asHTML,
   asLink,
+  documentAsLink,
   asDate,
-  defineClientEndpoint,
+  initClient,
+  setClientOptions,
 }
 
 export { usePrismic, prismic }

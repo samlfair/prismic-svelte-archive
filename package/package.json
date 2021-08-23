@@ -11,6 +11,7 @@
     "@prismicio/richtext": "^2.0.0-alpha.6",
     "@sveltejs/kit": "next",
     "magic-string": "^0.25.7",
+    "sm-commons": "^0.0.23",
     "svelte": "^3.34.0"
   },
   "keywords": [
@@ -18,12 +19,12 @@
     "prismic"
   ],
   "type": "module",
-  "dependencies": {
-    "sm-commons": "^0.0.23"
-  },
   "exports": {
     "./package.json": "./package.json",
     "./SliceZone.svelte": "./SliceZone.svelte",
-    ".": "./index.js"
+    "./client.js": "./client.js",
+    ".": "./index.js",
+    "./regexes.js": "./regexes.js",
+    "./templateLiterals.js": "./templateLiterals.js"
   }
 }

@@ -1,1 +1,1 @@
-export const scriptRegex = /<script.*>/
+export const scriptTag = /<script.*>/
