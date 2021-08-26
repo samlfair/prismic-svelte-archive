@@ -13,6 +13,7 @@ A set of helpers for developing Prismic projects with Svelte.
 - [x] Handle the API options
 - [ ] Add TypeScript and re-enable `config.kit.emitTypes`
 - [ ] Configure previews with client v6
+- [ ] Add a RichText component
 
 Do we want to add an Image component?
 
