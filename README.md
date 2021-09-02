@@ -90,6 +90,22 @@ export async function get({ query, headers }) {
 }
 ```
 
+### Enable previews
+
+Create `/src/hooks.js` and paste in:
+
+```js
+export function getSession(request) {
+  return request.headers.cookie ? { cookie: request.headers.cookie } : {}
+}
+```
+
+In `app.html`, add your preview script after the opening `<body>` tag and before this line:
+
+```html
+<div id="svelte">%svelte.body%</div>
+```
+
 ## Usage
 
 The plugin injects a `SliceZone` component and `prismic` object into components in the `src` folder as needed.
@@ -119,7 +135,7 @@ In a SvelteKit project:
 
 <script context="module">
   export async function load({ fetch, session }) {
-    const allDocs = await prismic.client(fetch, session).getAll()
+    const allDocs = await prismic.client(fetch, req: session).getAll()
     return { props: { allDocs } }
   }
 </script>
