@@ -13,6 +13,8 @@ A set of helpers for developing Prismic projects with Svelte.
 - [x] Handle the API options
 - [ ] Add TypeScript and re-enable `config.kit.emitTypes`
 - [ ] Configure previews with client v6
+- [ ] Add a RichText component
+- [ ] Research switching from `preprocess` to `rollup` ([more deets](https://github.com/samlfair/prismic-svelte/issues/1))
 
 Do we want to add an Image component?
 
